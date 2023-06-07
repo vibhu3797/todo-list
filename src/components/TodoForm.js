@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 
-function TodoForm(props) {
+function TodoForm({onSubmit}) {
   const [input, setInput] = useState('')
 
   const inputRef = useRef(null);
@@ -18,10 +18,10 @@ function TodoForm(props) {
   const handleSubmit = e => {
     e.preventDefault();
 
-    props.onSubmit({
-      id: Math.floor(Math.random() * 10000),
-      text: input
-    })
+    onSubmit(
+      Math.floor(Math.random() * 10000),
+      textinput
+    )
 
     setInput('')
   }
