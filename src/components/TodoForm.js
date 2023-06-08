@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react'
 
-function TodoForm({onSubmit}) {
-  const [input, setInput] = useState('')
+function TodoForm(props) {
+  const [input, setInput] = useState(props.edit ? props.edit.value : '')
 
   const inputRef = useRef(null);
 
@@ -18,7 +18,7 @@ function TodoForm({onSubmit}) {
   const handleSubmit = e => {
     e.preventDefault();
 
-    onSubmit({
+    props.onSubmit({
       id: Math.floor(Math.random() * 10000),
       text: input
     })
@@ -28,6 +28,21 @@ function TodoForm({onSubmit}) {
 
   return (
     <form className="todo-form" onSubmit={handleSubmit}>
+      {props.edit ? (
+        <>
+          <input
+            type='text'
+            placeholder='Update your item'
+            value={input}
+            name='text'
+            className='todo-input edit'
+            onChange={handleChange}
+            ref={inputRef}
+        />
+        <button className='todo-button edit'>Update</button>
+        </>
+      ) : (
+        <>
         <input
             type='text'
             placeholder='Add a todo'
@@ -38,6 +53,9 @@ function TodoForm({onSubmit}) {
             ref={inputRef}
         />
         <button className='todo-button'>Add todo</button>
+        </>
+      )
+      }
 
     </form>
   )

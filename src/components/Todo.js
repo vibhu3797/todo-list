@@ -22,10 +22,10 @@ function Todo({todos = [], completeTodo, removeTodo, updateTodo}) {
         return <TodoForm edit={edit} onSubmit={submitUpdate} />
     }
 
-    const handleCompleteTodo = e => {
-        // console.log(e.target)
-        completeTodo(e.target.id)
-      }
+    // const handleCompleteTodo = e => {
+    //     // console.log(e.target)
+    //     completeTodo(e.target.id)
+    //   }
     
 
     return todos.map((todo, index) => (
@@ -33,7 +33,7 @@ function Todo({todos = [], completeTodo, removeTodo, updateTodo}) {
             className={todo.isComplete ? 'todo-row complete' : 'todo-row'} 
             key={index}
         >
-            <div id={todo.id} key={todo.id} onClick={handleCompleteTodo}>
+            <div id={todo.id} key={todo.id} onClick={() => completeTodo(todo.id)}>
                 {todo.text}
             </div>
             <div className="icons">
