@@ -18,10 +18,10 @@ function TodoForm({onSubmit}) {
   const handleSubmit = e => {
     e.preventDefault();
 
-    onSubmit(
-      Math.floor(Math.random() * 10000),
-      textinput
-    )
+    onSubmit({
+      id: Math.floor(Math.random() * 10000),
+      text: input
+    })
 
     setInput('')
   }
