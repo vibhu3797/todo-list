@@ -22,11 +22,6 @@ function Todo({todos = [], completeTodo, removeTodo, updateTodo}) {
         return <TodoForm edit={edit} onSubmit={submitUpdate} />
     }
 
-    // const handleCompleteTodo = e => {
-    //     // console.log(e.target)
-    //     completeTodo(e.target.id)
-    //   }
-    
 
     return todos.map((todo, index) => (
         <div 
